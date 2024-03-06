@@ -1,0 +1,116 @@
+$primary: #71d4bc;
+$secondary: #a4e4d4;
+
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+
+.btn-primary{
+  background-color: $primary;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+
+  &:hover{
+    background-color: #99e2d0;
+    color: #fff;
+    font-weight: bold;
+  }
+}
+
+.mobile-sidebar{
+  display: none;
+
+  .active{
+    color: $primary !important;
+  }
+
+  .mobile-sidenav{
+    text-decoration: none;
+  }
+}
+
+.sidebar{
+  transition: all .5s;
+  width: 14%;
+  height: 100vh;
+
+  .mobile-sidenav{
+    text-decoration: none;
+  
+    :hover{
+      color: white;
+    }
+  }
+
+  .active{
+    color: $primary !important;
+    border-radius: 1rem;
+    background-color: $primary;
+    color: white !important;
+  }
+
+  .sidebar-logo{
+    height: 4rem;
+  }
+}
+
+.sidebar-collapse{
+  transition: all .5s;
+  width: 5%;
+  height: 100vh;
+
+  .mobile-sidenav{
+    text-decoration: none;
+  }
+
+  .active{
+    color: $primary !important;
+    border-radius: 1rem;
+    background-color: $primary;
+    color: white !important;
+  }
+
+  .sidebar-logo{
+    height: 5%;
+    height: 4rem;
+  }
+}
+
+.header-bar{
+  transition: all .5s;
+}
+
+.logo-text{
+  display: none;
+}
+
+.dashboard-content{
+  top: 0;
+}
+
+.logo-text{
+  display: none;
+}
+
+
+@media (max-width: 768px) {
+  .mobile-sidebar{
+    display: block;
+    width: 100%;
+  }
+
+  .sidebar{
+    display: none;
+  }
+
+  .sidebar-collapse{
+    display: none;
+  }
+
+  .logo{
+    display: none;
+  }
+
+  .logo-text{
+    display: block;
+  }
+}

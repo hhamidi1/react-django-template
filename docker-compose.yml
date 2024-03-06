@@ -1,0 +1,45 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15
+    container_name: pgdb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=myobedevdb
+      - POSTGRES_USER=myobedevuser
+      - POSTGRES_PASSWORD=asdas-123
+
+  backend:
+    container_name: myOBE-backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_HOST=db
+      - DB_NAME=myobedevdb
+      - DB_USER=myobedevuser
+      - DB_PASSWORD=asdas-123
+    volumes:
+      - ./backend:/app/backend
+    depends_on:
+      - db
+    env_file:
+      - ./backend/.env
+
+  frontend:
+    container_name: myOBE-frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./frontend:/app/frontend
+      - /app/frontend/node_modules
+
+volumes:
+  postgres_data:
